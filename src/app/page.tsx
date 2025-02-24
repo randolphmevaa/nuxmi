@@ -2,17 +2,19 @@
 
 import Head from "next/head";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Particles from "@/components/Particles";
+import { HeroWithParallax } from "@/components/HeroWithParallax";
+import { ParallaxGallerySection } from "@/components/ParallaxGallerySection";
 // import { AnimatedNumber } from "@/components/AnimatedNumber";
 
 // Import Heroicons
 import {
-  RocketLaunchIcon,
-  ChevronDownIcon,
+  // RocketLaunchIcon,
+  // ChevronDownIcon,
   ArrowRightIcon,
   UserGroupIcon,
   GlobeAltIcon,
@@ -27,82 +29,13 @@ import {
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
 
-// ---------------------------------------------------------
-// EnhancedParallaxImage Component (as defined in Navbar file)
-// ---------------------------------------------------------
-function EnhancedParallaxImage({
-  src,
-  alt,
-  speed = 50,
-  customStyle = {},
-}: {
-  src: string;
-  alt: string;
-  speed?: number;
-  customStyle?: React.CSSProperties;
-}) {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, speed]);
-  const scale = useTransform(scrollY, [0, 1000], [1, 1.05]);
-  return (
-    <motion.div style={{ y, scale, ...customStyle }} className="absolute">
-      <Image
-        src={src}
-        alt={alt}
-        width={300}
-        height={200}
-        className="rounded-lg shadow-2xl"
-      />
-    </motion.div>
-  );
-}
-
 export default function Accueil() {
   const targetRef = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: targetRef,
-  //   offset: ["start start", "end start"],
-  // });
-  // const yProgress = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
-  // const sectionVariants = {
-  //   hidden: { opacity: 0, y: 50 },
-  //   visible: { opacity: 1, y: 0 },
-  // };
 
   const title = "Nuxmi | Génération de Leads Haut de Gamme";
   const description =
     "Agence spécialisée en acquisition client premium - Transformez votre taux de conversion";
   const siteUrl = "https://nuxmi.com";
-
-  // Data for the Enhanced Parallax Images Section
-  const parallaxImagesData = [
-    {
-      src: "https://via.placeholder.com/300x200?text=Digital+Insight+1",
-      style: { top: "10%", left: "5%" },
-      speed: 30,
-    },
-    {
-      src: "https://via.placeholder.com/300x200?text=Digital+Insight+2",
-      style: { top: "20%", right: "5%" },
-      speed: -40,
-    },
-    {
-      src: "https://via.placeholder.com/300x200?text=Digital+Insight+3",
-      style: { bottom: "15%", left: "15%" },
-      speed: 50,
-    },
-    {
-      src: "https://via.placeholder.com/300x200?text=Digital+Insight+4",
-      style: { bottom: "10%", right: "10%" },
-      speed: -30,
-    },
-    {
-      src: "https://via.placeholder.com/300x200?text=Digital+Insight+5",
-      style: { top: "50%", left: "40%" },
-      speed: 40,
-    },
-  ];
 
   // Data for the Solution section
   const solutionItems = [
@@ -205,123 +138,18 @@ export default function Accueil() {
 
         <main className="relative z-10">
           {/* HERO SECTION */}
-          <section className="relative h-screen flex items-center justify-center overflow-hidden px-4">
-            <div className="relative z-20 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
-              {/* Text Content */}
-              <div className="md:w-1/2 text-center md:text-left">
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="mb-4"
-                >
-                  <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
-                    Vue sur BFMTV
-                  </span>
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                  className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight"
-                >
-                  Boostez votre croissance<br />
-                  avec des leads qualifiés.
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-xl text-gray-700 mb-10 max-w-lg"
-                >
-                  Des stratégies digitales performantes pour multiplier vos leads, en finance, immobilier, énergie, assurance ou B2B.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                >
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-10 py-4 bg-purple-600 text-white rounded-2xl text-xl font-semibold shadow-xl hover:shadow-2xl transition-all"
-                  >
-                    <RocketLaunchIcon className="w-6 h-6" />
-                    Obtenir plus de clients
-                    <motion.span
-                      className="inline-block"
-                      initial={{ x: 0 }}
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <ArrowRightIcon className="w-5 h-5" />
-                    </motion.span>
-                  </motion.a>
-                </motion.div>
-              </div>
-              {/* Illustration */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="mt-10 md:mt-0 md:w-1/2 flex justify-center"
-              >
-                <Image
-                  src="https://via.placeholder.com/600x400?text=Digital+Marketing+Illustration"
-                  alt="Digital Marketing Illustration"
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-2xl"
-                />
-              </motion.div>
-            </div>
-            {/* Scroll Down Indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 1,
-                duration: 0.8,
-                repeat: Infinity,
-                repeatType: "mirror",
-              }}
-              className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-            >
-              <ChevronDownIcon className="w-8 h-8 text-gray-600 animate-bounce" />
-            </motion.div>
-          </section>
-
-          {/* PARALLAX IMAGES SECTION */}
-          <section className="relative py-16 bg-gray-50 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4">
-              <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-                Inspiration Digitale
-              </h2>
-              <div className="relative h-[600px]">
-                {parallaxImagesData.map((item, idx) => (
-                  <EnhancedParallaxImage
-                    key={idx}
-                    src={item.src}
-                    alt={`Inspiration ${idx + 1}`}
-                    speed={item.speed}
-                    customStyle={{
-                      ...item.style,
-                      width: "300px",
-                      height: "200px",
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
+          <div>
+            <HeroWithParallax />
+            <ParallaxGallerySection />
+          </div>
 
           {/* SOLUTION SECTION */}
-          <section id="solution" className="py-24 bg-white">
+          <section id="solution" className="py-24">
             <div className="max-w-7xl mx-auto px-4 text-center">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Solution</h2>
               <p className="text-xl text-gray-700 mb-12 max-w-2xl mx-auto">
-                Ne payez plus pour des leads non qualifiés. Nous aidons les entrepreneurs ambitieux à atteindre plus d&apos;1M de chiffre d&apos;affaires en 12 mois.
+                Ne payez plus pour des leads non qualifiés. Nous aidons les entrepreneurs
+                ambitieux à atteindre plus d&apos;1M de chiffre d&apos;affaires en 12 mois.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {solutionItems.map((item, idx) => (
@@ -452,7 +280,7 @@ export default function Accueil() {
                   whileHover={{ y: -5 }}
                 >
                   <Image
-                    src="https://via.placeholder.com/600x400?text=Article+Preview"
+                    src="https://cdn.prod.website-files.com/62d355d9727756759479db7a/64fb52a42af301cacd583126_Untitled-design-2022-11-03T164246.018.png"
                     alt="Article Preview"
                     width={600}
                     height={400}
