@@ -42,3 +42,48 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: #0080ff;
 }
+
+
+.meteor {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: white;
+  top: -20px;
+  left: 50%;
+  animation: fall 3s linear infinite;
+  opacity: 0;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkleAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.sparkle {
+  will-change: opacity, transform;
+}
