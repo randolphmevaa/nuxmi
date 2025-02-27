@@ -63,7 +63,7 @@ export default function Footer() {
               className="h-16 w-auto"
             />
             <p className="text-gray-600 text-sm leading-relaxed">
-              Architectes de croissance digitale pour marques exigeantes. Nous créons des stratégies d'acquisition client innovantes et mesurables.
+              Architectes de croissance digitale pour marques exigeantes. Nous créons des stratégies d&apos;acquisition client innovantes et mesurables.
             </p>
             <div className="pt-4 flex space-x-3">
               <motion.button
