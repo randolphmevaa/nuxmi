@@ -42,8 +42,8 @@ const fontBody = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Nuxmi - Digital Marketing",
-  description: "Votre partenaire en stratégie digitale et marketing innovant",
+  title: "Nuxmi - Accélérez votre croissance B2B et B2C",
+  description: "Notre agence se distingue des fournisseurs de leads traditionnels en générant des leads qualifiés et sur-mesure, axée sur la valeur plutôt que sur le prix.",
 };
 
 export default function RootLayout({
