@@ -261,7 +261,7 @@ export default function Navbar() {
                 <span className="font-medium tracking-wide">09.67.07.46.95</span>
               </div>
             </a>
-            <Link href="/contact">
+            <Link href="/cta">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
@@ -391,7 +391,7 @@ export default function Navbar() {
                     <span className="text-xl text-gray-800 group-hover:text-purple-600 transition-colors duration-300">09.67.07.46.95</span>
                   </div>
                 </a>
-                <Link href="/contact">
+                <Link href="/cta">
                   <motion.button
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setIsOpen(false)}

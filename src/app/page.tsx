@@ -26,11 +26,13 @@ import {
   ChatBubbleLeftRightIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
+import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 
 // Import solid icons for hover states
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 
 import React from "react";
+import Link from "next/link";
 
 interface BlurBackgroundProps {
   children?: React.ReactNode;
@@ -449,6 +451,7 @@ export default function Accueil() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
                   >
+                    {/* Sub-badge */}
                     <motion.span 
                       className="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 text-sm font-medium mb-4"
                       initial={{ opacity: 0, y: 20 }}
@@ -457,6 +460,8 @@ export default function Accueil() {
                     >
                       Agence Lead Generation Premium
                     </motion.span>
+
+                    {/* Main Heading */}
                     <motion.h1 
                       className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
                       initial={{ opacity: 0, y: 20 }}
@@ -465,6 +470,8 @@ export default function Accueil() {
                     >
                       Transformez votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">acquisition client</span> pour plus de croissance
                     </motion.h1>
+
+                    {/* Subtext */}
                     <motion.p 
                       className="text-xl text-gray-600 mb-8 leading-relaxed"
                       initial={{ opacity: 0, y: 20 }}
@@ -473,6 +480,8 @@ export default function Accueil() {
                     >
                       Obtenez des leads qualifiés qui génèrent un véritable impact sur votre chiffre d&apos;affaires. Atteignez 1M€ en 12 mois avec notre approche unique.
                     </motion.p>
+
+                    {/* CTA Buttons */}
                     <motion.div 
                       className="flex flex-col sm:flex-row gap-4"
                       initial={{ opacity: 0, y: 20 }}
@@ -493,6 +502,31 @@ export default function Accueil() {
                         <ChevronRightIcon className="w-5 h-5" />
                       </motion.a>
                     </motion.div>
+
+                    {/* "Vue sur BFM TV" link right under the CTAs */}
+                    <motion.div
+                      className="mt-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                    >
+                      <a
+                        href="https://www.bfmtv.com/economie/entreprises/nuxmi-accelerez-votre-croissance-b2b-et-b2c_AO-202409300022.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-[#004278] font-medium hover:text-purple-800"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/fr/2/26/Logo_BFMTV_2017.svg"
+                          alt="BFMTV Logo"
+                          className="h-8 w-auto border-4 border-[#004278] rounded-lg" 
+                        />
+                        Vue sur BFM TV
+                        <ExternalLinkIcon className="w-4 h-4" />
+                      </a>
+                    </motion.div>
+
+                    {/* Client count / small badges */}
                     <motion.div 
                       className="mt-8 flex items-center gap-4"
                       initial={{ opacity: 0 }}
@@ -1134,6 +1168,47 @@ export default function Accueil() {
               </div>
             </div>
           </section>
+
+          <Link
+            href="https://wa.me/1234567890?text=Bonjour%20!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center
+                        w-14 h-14 bg-[#25D366] rounded-full shadow-md
+                        hover:bg-[#20b358] transition-all"
+            aria-label="WhatsApp Chat"
+            >
+                {/* Replace the old SVG with this new one */}
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24" 
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    // Keeping Tailwind classes so it appears white and sized properly:
+                    className="text-white w-7 h-7"
+                >
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 
+                            .068 3.558.064 7.926c0 1.399.366 2.76 1.057 
+                            3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 
+                            0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 
+                            14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433
+                            -.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 
+                            6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 
+                            1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934
+                            c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099
+                            -.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1
+                            -.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114
+                            -.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114
+                            .133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445
+                            -1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247
+                            -.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 
+                            1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47
+                            .205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171
+                            -.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133
+                            -.38-.232"/>
+                </svg>
+            </Link>
         </main>
 
         <Footer />

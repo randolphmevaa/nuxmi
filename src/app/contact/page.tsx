@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { FiMapPin, FiPhone, FiMail, FiSend } from "react-icons/fi";
 import React, { ReactNode } from "react";
+import Link from "next/link";
 
 interface BlurBackgroundProps {
   children?: ReactNode;
@@ -62,12 +63,13 @@ export default function Contact() {
 
           <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
             {/* Contact Information */}
-            <motion.div 
+            <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
+              {/* Address + Map */}
               <div className="p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-4 bg-purple-100 rounded-xl">
@@ -75,19 +77,24 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900">Notre siège</h3>
-                    <p className="text-gray-600">12 Rue de l&apos;Innovation<br/>75001 Paris, France</p>
+                    <p className="text-gray-600">
+                      34 avenue des Champs Élysées
+                      <br />
+                      75008 Paris, France
+                    </p>
                   </div>
                 </div>
 
                 <div className="h-48 rounded-xl overflow-hidden">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615509614!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1647356148514!5m2!1sfr!2sfr" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.3378857420216!2d2.304682215385276!3d48.86989117928827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc4202dfd21%3A0xa86133236c13c83f!2s34%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris%2C%20France!5e0!3m2!1sen!2sus!4v1674758661576!5m2!1sen!2sus"
                     className="w-full h-full rounded-lg border-0"
                     loading="lazy"
                   />
                 </div>
               </div>
 
+              {/* Phone and Email */}
               <div className="space-y-6">
                 <div className="p-6 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                   <div className="flex items-center gap-4">
@@ -96,7 +103,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">Téléphone</h3>
-                      <p className="text-gray-600 font-medium">+33 1 23 45 67 89</p>
+                      <p className="text-gray-600 font-medium">09.67.07.46.95</p>
                     </div>
                   </div>
                 </div>
@@ -179,6 +186,47 @@ export default function Contact() {
               {/* Social media links can be added here */}
             </div>
           </motion.div>
+
+          <Link
+            href="https://wa.me/1234567890?text=Bonjour%20!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center
+                        w-14 h-14 bg-[#25D366] rounded-full shadow-md
+                        hover:bg-[#20b358] transition-all"
+            aria-label="WhatsApp Chat"
+            >
+                {/* Replace the old SVG with this new one */}
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24" 
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    // Keeping Tailwind classes so it appears white and sized properly:
+                    className="text-white w-7 h-7"
+                >
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 
+                            .068 3.558.064 7.926c0 1.399.366 2.76 1.057 
+                            3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 
+                            0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 
+                            14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433
+                            -.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 
+                            6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 
+                            1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934
+                            c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099
+                            -.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1
+                            -.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114
+                            -.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114
+                            .133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445
+                            -1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247
+                            -.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 
+                            1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47
+                            .205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171
+                            -.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133
+                            -.38-.232"/>
+                </svg>
+            </Link>
         </main>
         
         <Footer />
