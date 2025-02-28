@@ -112,6 +112,7 @@ const TESTIMONIALS = [
 
 export default function Leads() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [mailSent, setMailSent] = useState(false);
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
@@ -132,7 +133,7 @@ export default function Leads() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-  
+
     try {
       const response = await fetch("/api/leads", {
         method: "POST",
@@ -141,19 +142,20 @@ export default function Leads() {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       const data = await response.json();
       console.log("API response:", data);
-      // Optionally, you can add code here to update the UI or notify the user of success.
+      // Set mailSent to true after a successful submission
+      setMailSent(true);
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Optionally, handle errors by updating the UI to display an error message.
+      // Optionally handle errors here
     }
-  };  
+  };
 
   // Auto-rotate testimonials every 5 seconds
   React.useEffect(() => {
@@ -280,6 +282,7 @@ export default function Leads() {
               </motion.div>
             </motion.div>
 
+            {/* Right Column (Form or Confirmation Message) */}
             <motion.div
               className="bg-white/90 backdrop-blur-md p-8 sm:p-10 rounded-2xl shadow-2xl border border-gray-100 relative overflow-hidden"
               initial={{ opacity: 0, x: 30 }}
@@ -292,181 +295,191 @@ export default function Leads() {
                 Obtenez des leads qualifiés maintenant
               </h3>
 
+              {mailSent ? (
+                <div className="relative z-10 text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Merci !
+                  </h3>
+                  <p className="text-lg text-gray-700">
+                    Votre demande a bien été envoyée. Nous vous contacterons sous peu.
+                  </p>
+                </div>
+              ) : (
                 <form className="space-y-5 relative z-10" onSubmit={handleSubmit}>
-                    {/* Grid for Name & Email */}
-                    <div className="grid sm:grid-cols-2 gap-5">
-                        <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Nom
-                        </label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <FiUser className="h-5 w-5 text-gray-400" />
-                            </div>
-                            <input
-                            type="text"
-                            name="nom"
-                            value={formData.nom}
-                            onChange={handleInputChange}
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-200 
-                                        rounded-xl text-gray-800 focus:outline-none 
-                                        focus:ring-2 focus:ring-purple-500 focus:border-transparent 
-                                        transition-all placeholder-gray-400 hover:border-gray-300"
-                            placeholder="Votre nom complet"
-                            required
-                            />
-                        </div>
-                        </div>
-
-                        <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Email
-                        </label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <FiMail className="h-5 w-5 text-gray-400" />
-                            </div>
-                            <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-200 
-                                        rounded-xl text-gray-800 focus:outline-none 
-                                        focus:ring-2 focus:ring-purple-500 focus:border-transparent 
-                                        transition-all placeholder-gray-400 hover:border-gray-300"
-                            placeholder="Votre adresse mail"
-                            required
-                            />
-                        </div>
-                        </div>
-                    </div>
-
-                    {/* Phone number */}
+                  {/* Grid for Name & Email */}
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Numéro de téléphone
-                        </label>
-                        <div className="relative">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Nom
+                      </label>
+                      <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <FiPhone className="h-5 w-5 text-gray-400" />
+                          <FiUser className="h-5 w-5 text-gray-400" />
                         </div>
                         <input
-                            type="tel"
-                            name="telephone"
-                            value={formData.telephone}
-                            onChange={handleInputChange}
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-200 
-                                    rounded-xl text-gray-800 focus:outline-none 
-                                    focus:ring-2 focus:ring-purple-500 focus:border-transparent 
-                                    transition-all placeholder-gray-400 hover:border-gray-300"
-                            placeholder="Votre numéro de téléphone"
-                            required
+                          type="text"
+                          name="nom"
+                          value={formData.nom}
+                          onChange={handleInputChange}
+                          className="block w-full pl-10 pr-3 py-3 border border-gray-200 
+                            rounded-xl text-gray-800 focus:outline-none 
+                            focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                            transition-all placeholder-gray-400 hover:border-gray-300"
+                          placeholder="Votre nom complet"
+                          required
                         />
-                        </div>
+                      </div>
                     </div>
 
-                    {/* Company */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Entreprise
-                        </label>
-                        <div className="relative">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Email
+                      </label>
+                      <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <FiBriefcase className="h-5 w-5 text-gray-400" />
+                          <FiMail className="h-5 w-5 text-gray-400" />
                         </div>
                         <input
-                            type="text"
-                            name="entreprise"
-                            value={formData.entreprise}
-                            onChange={handleInputChange}
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-200 
-                                    rounded-xl text-gray-800 focus:outline-none 
-                                    focus:ring-2 focus:ring-purple-500 focus:border-transparent 
-                                    transition-all placeholder-gray-400 hover:border-gray-300"
-                            placeholder="Nom de l'entreprise"
-                            required
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="block w-full pl-10 pr-3 py-3 border border-gray-200 
+                            rounded-xl text-gray-800 focus:outline-none 
+                            focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                            transition-all placeholder-gray-400 hover:border-gray-300"
+                          placeholder="Votre adresse mail"
+                          required
                         />
-                        </div>
+                      </div>
                     </div>
+                  </div>
 
-                    {/* Grid for Activite & Leads par semaine */}
-                    <div className="grid sm:grid-cols-2 gap-5">
-                        {/* Activite select */}
-                        <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Activité
-                        </label>
-                        <div className="relative">
-                            <select
-                            name="activite"
-                            value={formData.activite}
-                            onChange={handleInputChange}
-                            className="block w-full pl-3 pr-10 py-3 border border-gray-200 
-                                        rounded-xl text-gray-800 focus:outline-none 
-                                        focus:ring-2 focus:ring-purple-500 
-                                        focus:border-transparent transition-all appearance-none"
-                            >
-                            {ACTIVITES.map((activite, index) => (
-                                <option key={index} value={activite}>
-                                {activite}
-                                </option>
-                            ))}
-                            </select>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                            <svg
-                                className="h-5 w-5 text-gray-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                fillRule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                                />
-                            </svg>
-                            </div>
-                        </div>
-                        </div>
+                  {/* Phone number */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Numéro de téléphone
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FiPhone className="h-5 w-5 text-gray-400" />
+                      </div>
+                      <input
+                        type="tel"
+                        name="telephone"
+                        value={formData.telephone}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-3 py-3 border border-gray-200 
+                          rounded-xl text-gray-800 focus:outline-none 
+                          focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                          transition-all placeholder-gray-400 hover:border-gray-300"
+                        placeholder="Votre numéro de téléphone"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                        {/* Custom number input (1 to 1000) */}
-                        <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Leads par semaine
-                        </label>
-                        <div className="relative">
-                            <input
-                            type="number"
-                            name="leadsParSemaine"
-                            value={formData.leadsParSemaine}
-                            onChange={handleInputChange}
-                            min={1}
-                            max={1000}
-                            className="block w-full pl-3 pr-3 py-3 border border-gray-200 
-                                        rounded-xl text-gray-800 focus:outline-none 
-                                        focus:ring-2 focus:ring-purple-500 focus:border-transparent 
-                                        transition-all placeholder-gray-400 hover:border-gray-300"
+                  {/* Company */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Entreprise
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FiBriefcase className="h-5 w-5 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        name="entreprise"
+                        value={formData.entreprise}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-3 py-3 border border-gray-200 
+                          rounded-xl text-gray-800 focus:outline-none 
+                          focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                          transition-all placeholder-gray-400 hover:border-gray-300"
+                        placeholder="Nom de l'entreprise"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Grid for Activite & Leads par semaine */}
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    {/* Activite select */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Activité
+                      </label>
+                      <div className="relative">
+                        <select
+                          name="activite"
+                          value={formData.activite}
+                          onChange={handleInputChange}
+                          className="block w-full pl-3 pr-10 py-3 border border-gray-200 
+                            rounded-xl text-gray-800 focus:outline-none 
+                            focus:ring-2 focus:ring-purple-500 
+                            focus:border-transparent transition-all appearance-none"
+                        >
+                          {ACTIVITES.map((activite, index) => (
+                            <option key={index} value={activite}>
+                              {activite}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                          <svg
+                            className="h-5 w-5 text-gray-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clipRule="evenodd"
                             />
+                          </svg>
                         </div>
-                        </div>
+                      </div>
                     </div>
 
-                    {/* Submit button */}
-                    <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full px-6 py-4 mt-2 bg-gradient-to-r from-purple-600 to-indigo-600 
-                                text-white font-semibold rounded-xl shadow-lg hover:shadow-xl 
-                                transition-all flex items-center justify-center gap-2 group"
-                        type="submit"
-                    >
-                        <FiSend className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        Demander des leads maintenant
-                    </motion.button>
+                    {/* Custom number input (1 to 1000) */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Leads par semaine
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="number"
+                          name="leadsParSemaine"
+                          value={formData.leadsParSemaine}
+                          onChange={handleInputChange}
+                          min={1}
+                          max={1000}
+                          className="block w-full pl-3 pr-3 py-3 border border-gray-200 
+                            rounded-xl text-gray-800 focus:outline-none 
+                            focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                            transition-all placeholder-gray-400 hover:border-gray-300"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit button */}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full px-6 py-4 mt-2 bg-gradient-to-r from-purple-600 to-indigo-600 
+                      text-white font-semibold rounded-xl shadow-lg hover:shadow-xl 
+                      transition-all flex items-center justify-center gap-2 group"
+                    type="submit"
+                  >
+                    <FiSend className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    Demander des leads maintenant
+                  </motion.button>
                 </form>
-
+              )}
             </motion.div>
           </section>
 

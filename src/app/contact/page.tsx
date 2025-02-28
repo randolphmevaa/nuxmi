@@ -29,6 +29,7 @@ export default function Contact() {
     email: "",
     message: ""
   });
+  const [contactSent, setContactSent] = useState(false);
 
   // Handle changes in the input fields.
   const handleInputChange = (
@@ -58,12 +59,14 @@ export default function Contact() {
       const data = await response.json();
       console.log("Response from server:", data);
 
-      // Optionally, reset the form upon success.
+      // Optionally reset the form upon success.
       setContactData({
         fullName: "",
         email: "",
         message: "",
       });
+      // Set the state to display a confirmation message.
+      setContactSent(true);
     } catch (error) {
       console.error("Error submitting contact form:", error);
     }
@@ -186,63 +189,72 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <form className="space-y-8" onSubmit={handleSubmit}>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Nom complet
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={contactData.fullName}
+              {contactSent ? (
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900">Merci !</h3>
+                  <p className="text-gray-700">
+                    Votre message a bien été envoyé. Nous vous contacterons sous peu.
+                  </p>
+                </div>
+              ) : (
+                <form className="space-y-8" onSubmit={handleSubmit}>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Nom complet
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={contactData.fullName}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400 hover:border-gray-300"
+                        placeholder="Jean Dupont"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Adresse email
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        name="email"
+                        value={contactData.email}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400 hover:border-gray-300"
+                        placeholder="jean@exemple.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      rows={5}
+                      name="message"
+                      value={contactData.message}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400 hover:border-gray-300"
-                      placeholder="Jean Dupont"
+                      className="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400 hover:border-gray-300"
+                      placeholder="Décrivez votre projet..."
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Adresse email
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      name="email"
-                      value={contactData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400 hover:border-gray-300"
-                      placeholder="jean@exemple.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    rows={5}
-                    name="message"
-                    value={contactData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400 hover:border-gray-300"
-                    placeholder="Décrivez votre projet..."
-                  />
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center gap-2"
-                >
-                  <FiSend className="w-5 h-5" />
-                  Envoyer le message
-                </motion.button>
-              </form>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center gap-2"
+                  >
+                    <FiSend className="w-5 h-5" />
+                    Envoyer le message
+                  </motion.button>
+                </form>
+              )}
             </motion.div>
           </div>
 
