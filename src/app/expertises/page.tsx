@@ -128,7 +128,7 @@ export default function Secteur() {
             </div>
           </motion.div>
           <Link
-            href="https://wa.me/1234567890?text=Bonjour%20!"
+            href="https://wa.me/message/XP2DMY6CM7QXK1?text=Bonjour%20!"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center

@@ -442,7 +442,7 @@ export default function Accueil() {
           <section className="relative overflow-hidden" ref={containerRef}>
           <BlurBackground className="absolute inset-0" />
             
-            <div className="relative z-10 pt-40 pb-20 md:pt-48 md:pb-32">
+            <div className="relative z-10 pt-56 pb-20 md:pt-48 md:pb-32">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row items-center">
                   <motion.div 
@@ -546,7 +546,7 @@ export default function Accueil() {
                     </motion.div>
                   </motion.div>
                   <motion.div 
-                    className="md:w-1/2 mt-12 md:mt-0"
+                    className="hidden md:block md:w-1/2 mt-12 md:mt-0"
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
@@ -1170,7 +1170,7 @@ export default function Accueil() {
           </section>
 
           <Link
-            href="https://wa.me/1234567890?text=Bonjour%20!"
+            href="https://wa.me/message/XP2DMY6CM7QXK1?text=Bonjour%20!"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center
