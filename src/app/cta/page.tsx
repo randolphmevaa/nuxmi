@@ -129,12 +129,31 @@ export default function Leads() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Form submitted:", formData);
-    // Add API call or other form processing
-  };
+  
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+  
+      const data = await response.json();
+      console.log("API response:", data);
+      // Optionally, you can add code here to update the UI or notify the user of success.
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Optionally, handle errors by updating the UI to display an error message.
+    }
+  };  
 
   // Auto-rotate testimonials every 5 seconds
   React.useEffect(() => {
