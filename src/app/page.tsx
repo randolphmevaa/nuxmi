@@ -192,7 +192,7 @@ export default function Accueil() {
   const title = "Nuxmi | Génération de Leads Haut de Gamme";
   const description =
     "Agence spécialisée en acquisition client premium - Transformez votre taux de conversion";
-  const siteUrl = "https://nuxmi.com";
+  const siteUrl = "https://nuxmi.fr";
 
   // Data for the Solution section
   const solutionItems = [

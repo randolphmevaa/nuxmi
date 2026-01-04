@@ -174,7 +174,7 @@ export default function Contact() {
                         Email
                       </h3>
                       <p className="text-gray-600 font-medium">
-                        contact@nuxmi.com
+                        contact@nuxmi.fr
                       </p>
                     </div>
                   </div>

@@ -171,7 +171,7 @@ export default function Footer() {
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                   </span>
-                  <span>contact@nuxmi.com</span>
+                  <span>contact@nuxmi.fr</span>
                 </p>
               </div>
 
@@ -219,7 +219,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © 2025 Nuxmi. Tous droits réservés.
+            © 2026 Nuxmi. Tous droits réservés.
           </p>
           <div className="mt-4 md:mt-0 flex flex-wrap justify-center gap-4">
             <Link href="/politique-confidentialite" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
