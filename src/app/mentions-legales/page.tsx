@@ -120,7 +120,7 @@ export default function MentionsLegales() {
                     <li><span className="text-gray-500">Numéro d&apos;entreprise :</span> <span className="text-gray-900">16186153</span></li>
                     <li><span className="text-gray-500">Forme juridique :</span> <span className="text-gray-900">Private Limited Company (Société à responsabilité limitée)</span></li>
                     <li><span className="text-gray-500">Siège social :</span> <span className="text-gray-900">71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</span></li>
-                    <li><span className="text-gray-500">Date d&apos;immatriculation :</span> <span className="text-gray-900">15 janvier 2026</span></li>
+                    <li><span className="text-gray-500">Date d&apos;immatriculation :</span> <span className="text-gray-900">15 janvier 2025</span></li>
                     <li><span className="text-gray-500">Statut :</span> <span className="text-green-600 font-medium">Active</span></li>
                   </ul>
                 </div>
@@ -130,7 +130,7 @@ export default function MentionsLegales() {
               </SectionCard>
 
               {/* Activités */}
-              <SectionCard icon={GlobeAltIcon} title="Activités de l'entreprise" delay={0.2}>
+              {/* <SectionCard icon={GlobeAltIcon} title="Activités de l'entreprise" delay={0.2}>
                 <p>
                   Conformément à la classification SIC (Standard Industrial Classification), les activités déclarées de l&apos;entreprise sont :
                 </p>
@@ -141,7 +141,7 @@ export default function MentionsLegales() {
                 <p className="mt-4">
                   L&apos;activité principale de Nuxmi concerne la génération de leads et l&apos;acquisition client pour les entreprises B2B et B2C.
                 </p>
-              </SectionCard>
+              </SectionCard> */}
 
               {/* Directeur de la publication */}
               <SectionCard icon={UserIcon} title="Directeur de la publication" delay={0.3}>
