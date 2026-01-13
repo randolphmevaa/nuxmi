@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     domains: [
+      "uploads-ssl.webflow.com",
       "cdn.prod.website-files.com",
       "via.placeholder.com",
       "images.blush.design", // Add your image host here

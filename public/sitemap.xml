@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://nuxmi.fr</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://nuxmi.fr/og-image.jpg</image:loc>
+      <image:title>Nuxmi - Agence de Génération de Leads Premium</image:title>
+      <image:caption>Génération de leads qualifiés B2B et B2C</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://nuxmi.fr/blog</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Blog Article: Markave -->
+  <url>
+    <loc>https://nuxmi.fr/blog/markave-agence-ux-ui-design-marketing-digital</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://uploads-ssl.webflow.com/65666b7d3e4d8058ee4c34d2/665ef53e29a1b4e56e1c8cf6_Markave%20OpenGraph%20URL.png</image:loc>
+      <image:title>Markave - Agence UX/UI Design et Marketing Digital</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog Article: Nouveautés Septembre 2024 -->
+  <url>
+    <loc>https://nuxmi.fr/blog/nouveaute-septembre-2024</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog Article: Stratégies ROI -->
+  <url>
+    <loc>https://nuxmi.fr/blog/strategies-optimiser-roi</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Secteur d'activité -->
+  <url>
+    <loc>https://nuxmi.fr/secteur</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Expertises -->
+  <url>
+    <loc>https://nuxmi.fr/expertises</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- À propos -->
+  <url>
+    <loc>https://nuxmi.fr/about</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Contact -->
+  <url>
+    <loc>https://nuxmi.fr/contact</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- CTA / Landing page -->
+  <url>
+    <loc>https://nuxmi.fr/cta</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
